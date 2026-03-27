@@ -24,7 +24,16 @@ This is a backend application built using Spring Boot to manage student records.
 - MySQL
 - Maven
 
-
+---
+  
+## 📂 Project Structure 
+controller → Handles API requests  
+service → Business logic  
+repository → Database operations  
+model → Entity classes  
+dto → Data Transfer Objects  
+exception → Global exception handling 
+    
 ---
 
 ## ⚙️ How to Run
@@ -52,5 +61,3 @@ This is a backend application built using Spring Boot to manage student records.
 - Applied validation and exception handling
 - Integrated Spring Boot with MySQL
 ---
-
-## 📂 Project Structure
