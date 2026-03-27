@@ -4,6 +4,9 @@ import com.example.student.model.Student;
 import com.example.student.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import jakarta.validation.Valid;
+import com.example.student.dto.StudentDTO;
+import com.example.student.dto.StudentResponseDTO;
 
 @RestController
 @RequestMapping("/students")
@@ -29,8 +32,18 @@ public class StudentController {
 
     // POST /students
     @PostMapping
-    public Student setStudent(@RequestBody Student s) {
-        return studentService.setStudent(s);
+    public StudentResponseDTO setStudent(@Valid@RequestBody StudentDTO dto) {
+        Student s = new Student();
+        s.setName(dto.getName());
+        s.setDepartment(dto.getDepartment());
+        Student saved = studentService.setStudent(s);
+
+        StudentResponseDTO response = new StudentResponseDTO();
+        response.setId(saved.getId());
+        response.setName(saved.getName());
+        response.setDepartment(saved.getDepartment());
+
+        return response;
     }
 
     // DELETE /students/{id}
